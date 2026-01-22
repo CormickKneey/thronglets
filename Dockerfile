@@ -45,6 +45,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 COPY --from=backend /app/pyproject.toml /app/uv.lock /app/README.md ./
 COPY --from=backend /app/thronglets/ ./thronglets/
 COPY --from=backend /app/main.py ./
+COPY --from=backend /app/.venv/ ./.venv/
 
 # Copy built frontend files to the expected location
 COPY --from=frontend-builder /app/frontend/dist ./frontend/dist/
