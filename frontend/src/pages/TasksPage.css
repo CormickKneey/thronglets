@@ -1,0 +1,244 @@
+.tasks-page {
+  min-height: 400px;
+}
+
+.tasks-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.tasks-page__header h2 {
+  margin: 0;
+}
+
+.tasks-page__loading,
+.tasks-page__empty,
+.tasks-page__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem;
+  text-align: center;
+  background-color: #f5f5f5;
+  border: var(--border-width) solid var(--color-black);
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Task Card */
+.task-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-card__id {
+  font-family: monospace;
+  font-size: 0.875rem;
+  background-color: #f5f5f5;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-black);
+}
+
+.task-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-card__row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.task-card__row strong {
+  color: #666;
+  min-width: 80px;
+}
+
+.task-card__row code {
+  font-family: monospace;
+  background-color: #f5f5f5;
+  padding: 0.125rem 0.375rem;
+  border: 1px solid var(--color-black);
+}
+
+/* Task Detail Modal */
+.task-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-detail__tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--color-black);
+}
+
+.task-detail__tab {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.task-detail__tab:hover {
+  background-color: #f5f5f5;
+  transform: none;
+  box-shadow: none;
+}
+
+.task-detail__tab.active {
+  background-color: var(--color-primary);
+  border-bottom-color: var(--color-black);
+}
+
+.task-detail__section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.task-detail__loading {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.task-detail__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.task-detail__row strong {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.task-detail__row code {
+  background-color: #f5f5f5;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-black);
+  font-family: monospace;
+  font-size: 0.875rem;
+  word-break: break-all;
+}
+
+.task-detail__json {
+  background-color: #f5f5f5;
+  border: 2px solid var(--color-black);
+  padding: 1rem;
+  font-size: 0.75rem;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.task-detail__empty {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Conversation */
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.conversation__message {
+  padding: 1rem;
+  border: 2px solid var(--color-black);
+}
+
+.conversation__message--user {
+  background-color: var(--color-primary);
+  margin-left: 2rem;
+}
+
+.conversation__message--agent {
+  background-color: #f5f5f5;
+  margin-right: 2rem;
+}
+
+.conversation__header {
+  margin-bottom: 0.5rem;
+}
+
+.conversation__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Message Parts */
+.message-part {
+  margin: 0;
+}
+
+.message-part--text {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message-part--file {
+  padding: 0.5rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  font-size: 0.875rem;
+}
+
+.message-part--data {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  overflow-x: auto;
+}
+
+/* Artifacts */
+.artifacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.artifact-item {
+  padding: 1rem;
+  border: 2px solid var(--color-black);
+  background-color: #f5f5f5;
+}
+
+.artifact-item__header {
+  margin-bottom: 0.5rem;
+}
+
+.artifact-item__description {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.artifact-item__parts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

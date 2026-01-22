@@ -1,0 +1,48 @@
+.brutal-card {
+  background-color: var(--color-white);
+  border: var(--border-width) solid var(--color-black);
+  box-shadow: var(--shadow-brutal);
+  padding: 1.5rem;
+  transition: all 0.1s ease;
+}
+
+.brutal-card--primary {
+  background-color: var(--color-primary);
+}
+
+.brutal-card--outline {
+  background-color: transparent;
+}
+
+.brutal-card[role="button"] {
+  cursor: pointer;
+}
+
+.brutal-card[role="button"]:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--color-black);
+}
+
+.brutal-card[role="button"]:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.brutal-card__header {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-black);
+  margin-bottom: 1rem;
+}
+
+.brutal-card__body {
+  padding: 0;
+}
+
+.brutal-card__footer {
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-black);
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}

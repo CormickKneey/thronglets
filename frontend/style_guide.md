@@ -1,0 +1,2 @@
+- 风格参考: https://neo-brutalism-ui-library.vercel.app/components/card
+- 控制颜色的总数量: 黑色/白色/#F59E0B

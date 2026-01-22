@@ -1,0 +1,116 @@
+/* Neo-Brutalism Design System for Thronglets */
+/* Colors: black, white, #F59E0B (amber) */
+
+:root {
+  --color-primary: #F59E0B;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-border: #000000;
+
+  --shadow-brutal: 4px 4px 0px var(--color-black);
+  --shadow-brutal-sm: 2px 2px 0px var(--color-black);
+  --shadow-brutal-lg: 6px 6px 0px var(--color-black);
+
+  --border-width: 3px;
+  --radius: 0px;
+
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* Button base */
+button {
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: var(--border-width) solid var(--color-black);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-brutal);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  transition: all 0.1s ease;
+}
+
+button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--color-black);
+}
+
+button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+button.primary {
+  background-color: var(--color-primary);
+}
+
+button.danger {
+  background-color: #EF4444;
+  color: var(--color-white);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Input base */
+input, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: var(--border-width) solid var(--color-black);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-brutal-sm);
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: var(--shadow-brutal);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-white);
+  border: 2px solid var(--color-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border: 2px solid var(--color-black);
+}

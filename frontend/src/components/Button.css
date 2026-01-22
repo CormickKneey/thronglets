@@ -1,0 +1,58 @@
+.brutal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: var(--border-width) solid var(--color-black);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-brutal);
+  transition: all 0.1s ease;
+}
+
+.brutal-btn:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--color-black);
+}
+
+.brutal-btn:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.brutal-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Variants */
+.brutal-btn--primary {
+  background-color: var(--color-primary);
+}
+
+.brutal-btn--danger {
+  background-color: #EF4444;
+  color: var(--color-white);
+}
+
+.brutal-btn--outline {
+  background-color: transparent;
+}
+
+/* Sizes */
+.brutal-btn--sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.brutal-btn--md {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.brutal-btn--lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}

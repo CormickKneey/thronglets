@@ -1,0 +1,43 @@
+.brutal-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.brutal-input-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.brutal-input,
+.brutal-textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: var(--border-width) solid var(--color-black);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-brutal-sm);
+  width: 100%;
+  transition: box-shadow 0.1s ease;
+}
+
+.brutal-input:focus,
+.brutal-textarea:focus {
+  outline: none;
+  box-shadow: var(--shadow-brutal);
+}
+
+.brutal-input--error {
+  border-color: #EF4444;
+}
+
+.brutal-input-error {
+  color: #EF4444;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.brutal-textarea {
+  min-height: 100px;
+  resize: vertical;
+}

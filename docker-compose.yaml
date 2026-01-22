@@ -1,0 +1,30 @@
+services:
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  thronglets:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - THRONGLETS_STORAGE_TYPE=redis
+      - THRONGLETS_REDIS_URL=redis://redis:6379
+      - THRONGLETS_HOST=0.0.0.0
+      - THRONGLETS_PORT=8000
+    depends_on:
+      redis:
+        condition: service_healthy
+    ports:
+      - "8000:8000"  # Single port for both API and frontend
+
+volumes:
+  redis_data:
