@@ -46,6 +46,14 @@ export function TasksPage() {
     refresh();
   };
 
+  // Safely extract tasks array with fallback
+  const tasks = tasksResponse?.tasks ?? [];
+
+  // Debug log for development
+  if (import.meta.env.DEV) {
+    console.log("[TasksPage] state:", { isLoading, error: error?.message, tasksCount: tasks.length, tasksResponse });
+  }
+
   if (error) {
     return (
       <div className="tasks-page">
@@ -56,8 +64,6 @@ export function TasksPage() {
       </div>
     );
   }
-
-  const tasks = tasksResponse?.tasks || [];
 
   return (
     <div className="tasks-page">
@@ -143,7 +149,7 @@ function TaskCard({ task, onView, onDelete }: TaskCardProps) {
           {task.status.message && (
             <div className="task-card__row">
               <strong>Message:</strong>
-              <span>{task.status.message}</span>
+              <span>{typeof task.status.message === "string" ? task.status.message : "See details"}</span>
             </div>
           )}
           <div className="task-card__row">
@@ -248,7 +254,7 @@ function TaskDetailModal({ task, taskDetail, isLoading, onClose }: TaskDetailMod
                 {detail.status.message && (
                   <div className="task-detail__row">
                     <strong>Status Message:</strong>
-                    <span>{detail.status.message}</span>
+                    <span>{typeof detail.status.message === "string" ? detail.status.message : JSON.stringify(detail.status.message)}</span>
                   </div>
                 )}
                 <div className="task-detail__row">
@@ -313,24 +319,50 @@ function ConversationHistory({ messages }: { messages: Message[] }) {
 }
 
 function MessagePart({ part }: { part: Part }) {
-  switch (part.type) {
-    case "text":
-      return <p className="message-part message-part--text">{part.text}</p>;
-    case "file":
-      return (
-        <div className="message-part message-part--file">
-          <strong>File:</strong> {part.file.name} ({part.file.mime_type})
-        </div>
-      );
-    case "data":
-      return (
-        <pre className="message-part message-part--data">
-          {JSON.stringify(part.data, null, 2)}
-        </pre>
-      );
-    default:
-      return null;
+  // Handle backend format (no type field, check which property exists)
+  const backendPart = part as { text?: string; file?: { name?: string; media_type?: string }; data?: { data?: Record<string, unknown> } };
+
+  if (backendPart.text !== undefined) {
+    return <p className="message-part message-part--text">{backendPart.text}</p>;
   }
+
+  if (backendPart.file) {
+    return (
+      <div className="message-part message-part--file">
+        <strong>File:</strong> {backendPart.file.name || "Unknown"} ({backendPart.file.media_type || "unknown"})
+      </div>
+    );
+  }
+
+  if (backendPart.data) {
+    return (
+      <pre className="message-part message-part--data">
+        {JSON.stringify(backendPart.data.data || backendPart.data, null, 2)}
+      </pre>
+    );
+  }
+
+  // Fallback for frontend format (with type field)
+  if ("type" in part) {
+    switch (part.type) {
+      case "text":
+        return <p className="message-part message-part--text">{part.text}</p>;
+      case "file":
+        return (
+          <div className="message-part message-part--file">
+            <strong>File:</strong> {part.file.name} ({part.file.mime_type})
+          </div>
+        );
+      case "data":
+        return (
+          <pre className="message-part message-part--data">
+            {JSON.stringify(part.data, null, 2)}
+          </pre>
+        );
+    }
+  }
+
+  return null;
 }
 
 function ArtifactsList({ artifacts }: { artifacts: Task["artifacts"] }) {
