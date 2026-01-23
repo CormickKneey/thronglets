@@ -4,3 +4,4 @@ export { Modal } from "./Modal";
 export { Tabs, TabPanel } from "./Tabs";
 export { Input, Textarea } from "./Input";
 export { Badge } from "./Badge";
+export { CopyButton } from "./CopyButton";

@@ -42,6 +42,12 @@ export interface McpTool {
   category: string;
 }
 
+export interface AuthConfig {
+  enabled: boolean;
+  supabase_url: string | null;
+  supabase_anon_key: string | null;
+}
+
 export interface SystemInfo {
   name: string;
   version: string;
@@ -50,6 +56,7 @@ export interface SystemInfo {
     endpoint: string;
     transport: string;
     tools: McpTool[];
+    auth: AuthConfig;
   };
   health: {
     status: string;

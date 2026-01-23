@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { Card, CardHeader, CardBody, Button, Badge } from "../components";
+import { Card, CardHeader, CardBody, Button, Badge, CopyButton } from "../components";
 import { systemApi, type SystemInfo, type McpTool } from "../api/client";
 import { usePolling } from "../hooks/usePolling";
 import "./SystemPage.css";
@@ -126,10 +126,6 @@ function McpSection({ info }: { info: SystemInfo }) {
     return acc;
   }, {} as Record<string, McpTool[]>);
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
-
   return (
     <Card className="mcp-section">
       <CardHeader>
@@ -141,13 +137,7 @@ function McpSection({ info }: { info: SystemInfo }) {
             <strong>Endpoint:</strong>
             <div className="mcp-endpoint__url">
               <code>{mcp.endpoint}</code>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => copyToClipboard(mcp.endpoint)}
-              >
-                Copy
-              </Button>
+              <CopyButton text={mcp.endpoint} />
             </div>
           </div>
           <div className="mcp-transport">
@@ -180,10 +170,6 @@ function McpSection({ info }: { info: SystemInfo }) {
 function EndpointsSection({ info }: { info: SystemInfo }) {
   const { endpoints } = info;
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -195,39 +181,21 @@ function EndpointsSection({ info }: { info: SystemInfo }) {
             <strong>Base URL</strong>
             <div className="endpoint-item__url">
               <code>{endpoints.base_url}</code>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => copyToClipboard(endpoints.base_url)}
-              >
-                Copy
-              </Button>
+              <CopyButton text={endpoints.base_url} />
             </div>
           </div>
           <div className="endpoint-item">
             <strong>MCP URL</strong>
             <div className="endpoint-item__url">
               <code>{endpoints.mcp_url}</code>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => copyToClipboard(endpoints.mcp_url)}
-              >
-                Copy
-              </Button>
+              <CopyButton text={endpoints.mcp_url} />
             </div>
           </div>
           <div className="endpoint-item">
             <strong>Agent Card</strong>
             <div className="endpoint-item__url">
               <code>{endpoints.agent_card}</code>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => copyToClipboard(endpoints.agent_card)}
-              >
-                Copy
-              </Button>
+              <CopyButton text={endpoints.agent_card} />
             </div>
           </div>
         </div>

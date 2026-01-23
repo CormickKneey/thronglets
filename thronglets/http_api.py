@@ -14,6 +14,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from thronglets.app_registry import app_registry
+from thronglets.auth import AUTH_ENABLED, get_auth_config
 from thronglets.dynamic_mcp import get_app_tools
 from thronglets.mcp_server import mcp
 from thronglets.models import (
@@ -222,6 +223,7 @@ async def get_system_info() -> dict:
             "endpoint": mcp_url,
             "transport": "streamable-http",
             "tools": MCP_TOOLS,
+            "auth": get_auth_config(),
         },
         "health": {
             "status": "healthy",

@@ -5,6 +5,7 @@ from datetime import datetime
 from fastapi.logger import logger
 from fastmcp import Context, FastMCP
 
+from thronglets.auth import get_auth_provider
 from thronglets.models import (
     InternalMessage,
     Message,
@@ -19,10 +20,13 @@ from thronglets.store import store
 # Header key for agent ID
 AGENT_ID_HEADER = "X-Agent-ID"
 
+# Get auth provider (None if auth is disabled)
+auth_provider = get_auth_provider()
 
 mcp = FastMCP(
     name="Thronglets MCP",
     instructions="MCP server for agent communication in Thronglets ServiceBus",
+    auth=auth_provider,
 )
 
 

@@ -76,9 +76,7 @@ async def main():
     print("=" * 60)
 
     # ServiceBus URL - 可以通过环境变量配置
-    servicebus_url = os.getenv(
-        "THRONGLETS_SERVICEBUS_URL", "http://bus:8000"
-    )
+    servicebus_url = os.getenv("THRONGLETS_SERVICEBUS_URL", "http://bus:8000")
     print(f"🔗 Connecting to ServiceBus: {servicebus_url}")
 
     # Create two BusClient connections

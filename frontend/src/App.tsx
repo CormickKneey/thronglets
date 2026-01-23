@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabPanel } from "./components";
-import { AppsPage, AgentsPage, TasksPage, SystemPage } from "./pages";
+import { AppsPage, AgentsPage, TasksPage, SystemPage, AuthPage } from "./pages";
 import "./App.css";
 
 const tabs = [
@@ -8,6 +8,7 @@ const tabs = [
   { id: "agents", label: "Agents" },
   { id: "tasks", label: "Tasks" },
   { id: "system", label: "System" },
+  { id: "auth", label: "Auth" },
 ];
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
 
         <TabPanel id="system" activeTab={activeTab}>
           <SystemPage />
+        </TabPanel>
+
+        <TabPanel id="auth" activeTab={activeTab}>
+          <AuthPage />
         </TabPanel>
       </main>
 
